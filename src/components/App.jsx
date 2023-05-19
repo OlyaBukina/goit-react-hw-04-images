@@ -45,16 +45,18 @@ export const App = () => {
   const getQuery = ({ query }) => {
     setQuery(query);
     setImages([]);
+    setPage(1);
     setShowBtnLoadmore(false);
   };
   const incrementPage = () => {
     setPage(prevPage => prevPage + 1);
   };
+
   return (
     <Container>
       <Searchbar onSubmit={getQuery} />
 
-      <ImageGallery images={images} />
+      <ImageGallery images={images} page={page} />
       {isLoading && <Loader />}
       {showBtnLoadmore && <LoadMoreBtn incrementPage={incrementPage} />}
 
